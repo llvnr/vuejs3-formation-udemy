@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 4-02</title>
+</head>
+<body>
+
+    <div id="app">
+        <art>
+            <template v-slot:titre>
+                <h1>Titre de l'article</h1>
+            </template>
+            <p>
+                Un simple texte en dehors d'un slot nommé.
+            </p>
+            <template v-slot:bas>
+                <p>Bas de l'article</p>
+            </template>
+            <p>Un autre texte en dehors d'un slot nommé.</p>
+        </art>
+    </div>
+
+
+    <script>
+        const Art = {
+            render() {
+                return h('div', {}, [
+                    h('header', {}, this.$slots.titre()),
+                    h('main', {}, this.$slots.default()),
+                    h('footer', {}, this.$slots.bas())
+                ])
+            }
+        }
+        const {h} = Vue;
+        const app = Vue.createApp({
+            components: {
+                'art': Art
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+    
+</body>
+</html>

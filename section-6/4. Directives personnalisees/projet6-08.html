@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 6-08</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <div v-hbleu:1="'Un titre H1 surligné en lightbleu'"></div>
+        <div v-hbleu:2="'Un titre H2 surligné en lightbleu'"></div>
+        <div v-hbleu:3="'Un titre H3 surligné en lightbleu'"></div>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            
+        });
+        app.directive('hbleu', {
+            beforeMount(el, binding) {
+                el.innerHTML = '<h' + binding.arg + '>' + binding.value + '</h' + binding.arg + '>'
+                el.style.background = 'lightblue'
+            }
+        })
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

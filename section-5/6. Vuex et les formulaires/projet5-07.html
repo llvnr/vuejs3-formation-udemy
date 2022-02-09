@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5-07</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" @input="updateMessage">
+    </div>
+
+    <script>
+        const store = new Vuex.Store({
+            state: {
+                message: ''
+            },
+            mutations: {
+                maj(state, payload) {
+                    state.message = payload
+                    console.log(state.message)
+                }
+            }
+        })
+        const app = Vue.createApp({
+            methods: {
+                updateMessage(event) {
+                    this.$store.commit('maj', event.target.value)
+                }
+            }
+        });
+        app.use(store);
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

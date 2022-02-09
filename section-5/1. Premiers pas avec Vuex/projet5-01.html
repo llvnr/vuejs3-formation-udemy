@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5-01</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+        Valeur actuelle : {{ actuel }} <br>
+        <button @click="plusUn">+1</button>
+        <button @click="moinsUn">-1</button>
+    </div>
+
+    <script>
+        const store = new Vuex.Store({
+            state: {
+                compteur: 0
+            },
+            mutations: {
+                increment(state) {
+                    state.compteur++
+                },
+                decrement(state) {
+                    state.compteur--
+                }
+            }
+        })
+
+        const app = Vue.createApp({
+            computed: {
+                actuel(){
+                    return store.state.compteur
+                }
+            },
+            methods: {
+                plusUn() {
+                    store.commit('increment')
+                },
+                moinsUn(){
+                    store.commit('decrement')
+                }
+            }
+        });
+        app.use(store);
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

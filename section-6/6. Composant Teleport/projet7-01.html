@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 7-01</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+  </head>
+  <body>
+    <div id="app">
+
+        <bonjour></bonjour>
+
+    </div>
+
+    <script>
+      const app = Vue.createApp({});
+      app.component("bonjour", {
+        template: `<p>Un premier paragraphe dans le composant</p>
+                        <teleport to="body":disabled="deplace">
+                        <p>Un deuxième paragraphe dans le composant</p>
+                        </teleport>
+                        <button @click="deplace!=deplace">Change</button>`,
+        data() {
+            return {
+                deplace: true
+            }
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

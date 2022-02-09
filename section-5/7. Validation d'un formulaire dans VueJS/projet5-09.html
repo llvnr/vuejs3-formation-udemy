@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5-09</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <p v-if="errors.length">
+            <strong>Une ou plusieurs erreurs ont été détectées.</strong>
+            <ul>
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </p>
+        <form @submit="verif" action="https://www.bing.com" method="post">
+            <p>
+                <label for="nom">Nom : </label>
+                <input type="text" name="nom" v-model="name">
+            </p>
+            <p>
+                <label for="mail">Mail : </label>
+                <input type="text" name="mail" v-model="mail">
+            </p>
+            <p>
+                <input type="submit" value="Envoyer">
+            </p>
+        </form>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: '',
+                    mail: '',
+                    errors: []
+                }
+            },
+            methods: {
+                valide(mail) {
+                    let ex = new RegExp(/^[a-z0-9.-]+@[a-z0-9._-]{2,}\.[a-z]{2,8}$/); // test validation email en REGEX.
+                    return ex.test(mail);
+                },
+                verif(ev) {
+                    this.errors = []
+                    if(!this.name) {
+                        this.errors.push('Le nom est obligatoire');
+                    }
+                    if(!this.mail) {
+                        this.errors.push('Le mail est obligatoire');
+                    }
+                    else if(!this.valide(this.mail)) {
+                        this.errors.push('Le mail n\'est pas bien formé.');
+                    }
+
+                    if(this.errors.length == 0) {
+                        return true;
+                    } else {
+                        ev.preventDefault();
+                        return false;
+                    }
+                    
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5-06</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+        Stock actuel : {{ actuel.state.salades }} <br>
+        <vente></vente>
+        <reappro></reappro>
+    </div>
+
+    <script>
+        let state = Vue.reactive({
+            salades: 20
+        })
+        const Vente = {
+            template: '<button @click="vente">Une vente</button>',
+            methods: {
+                vente() {
+                    state.salades--;
+                }
+            }
+        }
+        const Reappro = {
+            template: '<button @click="reapp">Réappro</button>',
+            methods: {
+                reapp() {
+                    state.salades += 10;
+                }
+            }
+        }
+        const app = Vue.createApp({
+            components: {
+                vente: Vente,
+                reappro: Reappro
+            },
+            computed: {
+                actuel() {
+                    return {state}
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

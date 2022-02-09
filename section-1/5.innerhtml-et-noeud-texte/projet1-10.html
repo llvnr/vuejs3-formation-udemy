@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-10</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        Nom : <span v-text="person.nom"></span> <br/>
+
+        Prénom : <span v-text="person.prenom"></span> <br/>
+
+        Age : <span v-text="person.age"></span><br/>
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+            data() {
+                return {
+                    person: {
+                        nom: 'Doe',
+                        prenom: 'John',
+                        age: 20
+                    }
+                }
+            }
+        });
+        const vm = app.mount('#app');
+        setTimeout(() => {
+            vm.person.age = 25;
+        }, 3000);
+    </script>
+    
+</body>
+</html>

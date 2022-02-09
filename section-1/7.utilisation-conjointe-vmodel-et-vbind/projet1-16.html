@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-16</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <p>Cochez les cases des langages que vous connaissez : </p>
+        <input type="checkbox" v-model="langage" value="HTML">HTML</input>
+        <input type="checkbox" v-model="langage" value="CSS">CSS</input>
+        <input type="checkbox" v-model="langage" value="Javascript">Javascript</input>
+
+        <p>Cases cochées : {{ langage }}</p>
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+            data() {
+                return {
+                    langage: []
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-17</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <p>Quel langage préférez-vous ? </p>
+        <input type="radio" v-model="lang" value="HTML">
+        <label>HTML</label>
+        <input type="radio" v-model="lang" value="CSS">
+        <label>CSS</label>
+        <input type="radio" v-model="lang" value="Javascript">
+        <label>Javascript</label>
+
+        <p>Langage préféré : {{ lang }}</p>
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+            data() {
+                return {
+                    lang: ''
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

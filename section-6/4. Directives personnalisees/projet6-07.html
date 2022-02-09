@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 6-07</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vuex@4"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <div v-h1bleu="'Hello'"></div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            
+        });
+        app.directive('h1bleu', {
+            beforeMount(el, binding) {
+                el.innerHTML = '<h1>' + binding.value + '<h1>'
+                el.style.background = 'lightblue'
+            }
+        })
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

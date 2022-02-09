@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-25</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <img src="img/petitchat.jpg" 
+             :width="valeur"
+             @click.left="largeur(200)"
+             @click.right="largeur(100)"
+             @click.middle="largeur(400)">
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+            data() {
+                return {
+                    valeur: 300
+                }
+            },
+            methods: {
+                largeur(lar) {
+                    this.valeur = lar;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

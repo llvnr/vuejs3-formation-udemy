@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2-34</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+        .fade-enter-active, .t-leave-active {
+            transition: opacity 2s ease;
+        }
+
+        .fade-enter-from, .t-leave-to {
+            opacity: 0;
+        }
+
+        input {
+            margin-right: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+
+        <input type="text" v-model="fruit">
+        <input type="button" value="Ajouter" @click="ajouter">
+        <input type="button" value="Supprimer le premier" @click="supprimer"><br>
+
+        <transition-group name="fade">
+            <span v-for="element in liste" :key="element">
+                {{ element }} 
+            </span><br>
+        </transition-group>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    liste: ['banane', 'pomme', 'poire'],
+                    fruit: ''
+                }
+            },
+            methods: {
+                ajouter() {
+                    this.liste.push(this.fruit)
+                },
+                supprimer() {
+                    this.liste.shift()
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

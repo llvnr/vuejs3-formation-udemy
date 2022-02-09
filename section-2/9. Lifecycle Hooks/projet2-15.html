@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2-15</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <table>
+            <tr v-for="user in users">
+                <td><img :src="user.picture.large"></td>
+                <td>
+                    {{ user.name.first }} {{ user.name.last }} <br>
+                    {{ user.email }} <br>
+                    {{ user.phone }}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    users: []
+                }
+            },
+            created() {
+                axios.get('https://randomuser.me/api/?results=3').then(function(reponse) {
+                    vm.users = reponse.data.results
+                })
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+    
+</body>
+</html>
